@@ -1,10 +1,17 @@
 class LuxuryAutomobile < ApplicationRecord
-  include Autoable
-  delegate :num_wheels, to: :automobile
+  # include vehicleable
+  has_one :vehicle, as: :vehicleable, touch: true
+  delegate_missing_to :vehicle
 
-  def num_wheels= number
-    self.automobile.num_wheels = number
-    self.save!
-  end
+  # delegate_missing_to :automobile
+
+
+
+  # delegate :num_wheels, to: :automobile
+
+  # def num_wheels= number
+  #   self.automobile.num_wheels = number
+  #   self.save!
+  # end
 
 end

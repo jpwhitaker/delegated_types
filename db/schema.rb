@@ -10,27 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_14_040902) do
+ActiveRecord::Schema.define(version: 2021_07_17_083118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "automobiles", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
-    t.integer "num_wheels"
-    t.integer "num_doors"
-    t.string "color"
-    t.string "autoable_type"
-    t.bigint "autoable_id"
-    t.index ["autoable_type", "autoable_id"], name: "index_automobiles_on_autoable"
-    t.index ["user_id"], name: "index_automobiles_on_user_id"
   end
 
   create_table "luxury_automobiles", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.boolean "leather_seats"
     t.integer "num_screens"
     t.string "custom_monogram"
@@ -40,6 +28,19 @@ ActiveRecord::Schema.define(version: 2021_07_14_040902) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
+  end
+
+  create_table "vehicles", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.integer "num_wheels"
+    t.integer "num_doors"
+    t.string "color"
+    t.string "vehicleable_type"
+    t.bigint "vehicleable_id"
+    t.index ["user_id"], name: "index_vehicles_on_user_id"
+    t.index ["vehicleable_type", "vehicleable_id"], name: "index_vehicles_on_vehicleable"
   end
 
 end
