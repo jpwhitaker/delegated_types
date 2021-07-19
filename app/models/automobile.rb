@@ -1,6 +1,11 @@
+# == Schema Information
+#
+# Table name: automobiles
+#
+#  id :bigint           not null, primary key
+#
 class Automobile < ApplicationRecord
-  # include vehicleable
-  has_one :vehicle, as: :vehicleable, touch: true
+  include Vehicleable
   delegate_missing_to :vehicle
 
 end
